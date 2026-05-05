@@ -1,5 +1,6 @@
 module ManifoldsMakie
 
+using GeometryBasics
 using Manifolds
 using Manifolds: Sphere
 using Makie
