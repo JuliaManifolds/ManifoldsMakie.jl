@@ -7,6 +7,7 @@ using Makie
 import Makie: scatter, scatter!
 
 include("sphere.jl")
+include("geodesics.jl")
 
 export Sphere
 export scatter, scatter!
