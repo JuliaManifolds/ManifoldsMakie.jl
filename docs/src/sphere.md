@@ -1,9 +1,7 @@
 # Plotting data on the 2D Sphere
 
 ```@example
-using Bonito, Manifolds, ManifoldsMakie, WGLMakie
-
-Page() # required for multi cell output inside documenter
+using Manifolds, ManifoldsMakie, GLMakie
 
 M = Manifolds.Sphere(2)
 fig = Figure(backgroundcolor = :white, size = (640, 500))
