@@ -13,7 +13,7 @@ sphereplot!(ax, M;
 )
 p = [0.0, 0.0, 1.0]
 q = [0.0, 1/sqrt(2), -1/sqrt(2)]
-pts = Point3f.(geodesic(M, p, q, 0:0.1:1.0))
+pts = Point3f.(shortest_geodesic(M, p, q, 0:0.05:1.0))
 
 scatter!(ax, M, pts; color = :green, markersize = 8)
 fig
