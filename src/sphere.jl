@@ -25,7 +25,11 @@ scatter!(ax, Manifolds.Sphere(2), pts)
 end
 
 function Makie.plot!(plot::SpherePlot{<:Tuple{Manifolds.Sphere{ℝ, Manifolds.TypeParameter{Tuple{2}}}}})
-    # TODO: Understand this a bit better
+    # create a new compute edge
+    # with [:M, :wires] as input nodes (these must already exist)
+    # with :sphere_mesh as the output node (this will be created)
+    # running the computation defined in the do ... end block
+    # where :M is M and :wires is mapped to n
     map!(plot.attributes, [:M, :wires], :sphere_mesh) do M, n
         return GeometryBasics.uv_normal_mesh(Tessellation(Makie.Sphere(Point3f(0), 1.0f0), n))
     end
