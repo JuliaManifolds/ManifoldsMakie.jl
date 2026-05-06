@@ -1,7 +1,10 @@
 # Plotting data on the 2D Sphere
 
 ```@example
-using Manifolds, WGLMakie, ManifoldsMakie
+using Bonito, Manifolds, ManifoldsMakie, WGLMakie
+
+Page() # required for multi cell output inside documenter
+
 M = Manifolds.Sphere(2)
 fig = Figure(backgroundcolor = :white, size = (640, 500))
 ax = LScene(fig[1, 1], show_axis = false)
