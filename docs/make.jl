@@ -81,6 +81,7 @@ makedocs(;
     format = Documenter.HTML(;
         prettyurls = run_on_CI || ("--prettyurls" ∈ ARGS),
         assets = ["assets/citations.css", "assets/link-icons.css"],
+        size_threshold = 300 * 2^10,      # raise slightly 200 to 300 KiB
     ),
     authors = "Ronny Bergmann <ronny.bergmann@ntnu.no> and contributors.",
     sitename = "ManifoldsMakie.jl",
