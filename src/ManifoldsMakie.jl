@@ -11,4 +11,6 @@ include("geodesics.jl")
 
 export Sphere
 export scatter, scatter!
+export geodesics, geodesics!
+export scattergeodesics, scattergeodesics!
 end # module ManifoldsMakie

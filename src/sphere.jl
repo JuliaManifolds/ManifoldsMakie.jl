@@ -45,6 +45,24 @@ function Makie.plot!(plot::SpherePlot{<:Tuple{Manifolds.Sphere{ℝ, Manifolds.Ty
     return plot
 end
 
+#
+#
+# Overwrite sphereplot (as a bit of a hack) to remove axes and use the nice default sphere from the docs?
+function sphereplot(
+        M::Manifolds.Sphere{ℝ, Manifolds.TypeParameter{Tuple{2}}};
+        surfacecolor = :white, surfacealpha = 0.3, wirecolor = (:lightsteelblue, 0.4), wires = 28, wirewidth = 0.5,
+        size = (1024, 1024), backgroundcolor = :white, show_axis = false, kwargs...
+    )
+    fig = Figure(backgroundcolor = backgroundcolor, size = size, kwargs...)
+    ax = LScene(fig[1, 1], show_axis = show_axis, kwargs...)
+    pl = sphereplot!(
+        ax, M;
+        surfacecolor = surfacecolor, surfacealpha = surfacealpha,
+        wirecolor = wirecolor, wires = wires, wirewidth = wirewidth,
+        kwargs...
+    )
+    return Makie.FigureAxisPlot(fig, ax, pl)
+end
 # For `scatter(M, pts)`, `lines(M, pts)`, `scatterlines(M, pts)`
 # (and any other PointBased plot) work on a manifold via this overload.
 # We do not have to transform the points
@@ -61,7 +79,3 @@ function Makie.convert_arguments(::Makie.ArrowLike, ::Manifolds.Sphere{ℝ, Mani
         convert_arguments(Makie.PointBased(), vecs)[1],
     )
 end
-
-# For lines(M, pts), we want to intercept and use separate lines of sampled geodesics between the points
-#
-#

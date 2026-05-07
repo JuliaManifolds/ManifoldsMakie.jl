@@ -87,10 +87,13 @@ makedocs(;
     sitename = "ManifoldsMakie.jl",
     pages = [
         "Home" => "index.md",
-        "Sphere(2)" => "sphere.md",
+        "Geodesics" => "geodesics.md",
+        "2D Sphere" => "sphere.md",
         "Changelog" => "changelog.md",
+        "References" => "references.md",
     ],
     plugins = [bib, links],
+    warnonly = [:cross_references], #Temporarily until we fix the Makie.LineStyle ref
 )
 deploydocs(; repo = "github.com/JuliaManifolds/ManifoldsMakie.jl", push_preview = true)
 #back to main env
