@@ -6,7 +6,17 @@ Creates a connected geodesic plot connecting all or `points` sequentially.
 `NaN` values are displayed as gaps in the line.
 """
 @recipe Geodesics (M, points) begin
-    Makie.documented_attributes(Lines)...
+    # The docstring of linestyle has a [](@ref) in there so we first exclude it here...
+    Makie.filtered_attributes(Lines; exclude = (:linestyle,))...
+    # and add it manually with the doc string adapted
+    """
+    Sets the dash pattern of the line. Options are `:solid` (equivalent to `nothing`), `:dot`, `:dash`, `:dashdot` and `:dashdotdot`.
+    These can also be given in a tuple with a gap style modifier, either `:normal`, `:dense` or `:loose`.
+    For example, `(:dot, :loose)` or `(:dashdot, :dense)`.
+
+    For custom patterns have a look at [`Makie.Linestyle`](@extref).
+    """
+    linestyle = nothing
     "Set the number of samples used per geodesic"
     samples = 100
     "Set the curve to be closed by connecting the last and first point as well"
@@ -42,7 +52,17 @@ Plots a `scatter` of points on a manifold `M` and `geodesics` between them.
 This plot recipe follows [`scatterlines`](@extref `Makie.scatterlines`) very closely.
 """
 @recipe ScatterGeodesics (M, points) begin
-    Makie.documented_attributes(Geodesics)...
+    # The docstring of linestyle has a [](@ref) in there so we first exclude it here...
+    Makie.filtered_attributes(Geodesics; exclude = (:linestyle,))...
+    # and add it manually with the doc string adapted
+    """
+    Sets the dash pattern of the line. Options are `:solid` (equivalent to `nothing`), `:dot`, `:dash`, `:dashdot` and `:dashdotdot`.
+    These can also be given in a tuple with a gap style modifier, either `:normal`, `:dense` or `:loose`.
+    For example, `(:dot, :loose)` or `(:dashdot, :dense)`.
+
+    For custom patterns have a look at [`Makie.Linestyle`](@extref).
+    """
+    linestyle = nothing
     Makie.filtered_attributes(
         Scatter, exclude = (
             :color, :colormap, :colorrange, :colorscale, :lowclip, :highclip, :alpha,

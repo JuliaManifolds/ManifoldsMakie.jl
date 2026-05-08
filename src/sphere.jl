@@ -11,13 +11,13 @@ scatter!(ax, Manifolds.Sphere(2), pts)
 """
 @recipe SpherePlot (M,) begin
     "Color of the wireframe lines drawn on top of the surface."
-    wirecolor = :gray40
+    wirecolor = (:lightsteelblue, 0.4)
     "Tessellation resolution (segments of the wireframe in every direction)."
-    wires = 32
+    wires = 24
     "linewidth of the wire"
-    wirewidth = 1
+    wirewidth = 0.5
     "Solid color of the surface."
-    surfacecolor = :blue
+    surfacecolor = :white
     "Surface alpha (0 = transparent, 1 = opaque)."
     surfacealpha = 0.5
     # add the other default plot attributes here as well
@@ -50,17 +50,11 @@ end
 # Overwrite sphereplot (as a bit of a hack) to remove axes and use the nice default sphere from the docs?
 function sphereplot(
         M::Manifolds.Sphere{ℝ, Manifolds.TypeParameter{Tuple{2}}};
-        surfacecolor = :white, surfacealpha = 0.3, wirecolor = (:lightsteelblue, 0.4), wires = 28, wirewidth = 0.5,
         size = (1024, 1024), backgroundcolor = :white, show_axis = false, kwargs...
     )
     fig = Figure(backgroundcolor = backgroundcolor, size = size, kwargs...)
     ax = LScene(fig[1, 1], show_axis = show_axis, kwargs...)
-    pl = sphereplot!(
-        ax, M;
-        surfacecolor = surfacecolor, surfacealpha = surfacealpha,
-        wirecolor = wirecolor, wires = wires, wirewidth = wirewidth,
-        kwargs...
-    )
+    pl = sphereplot!(ax, M; kwargs...)
     return Makie.FigureAxisPlot(fig, ax, pl)
 end
 # For `scatter(M, pts)`, `lines(M, pts)`, `scatterlines(M, pts)`

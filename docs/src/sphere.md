@@ -19,11 +19,13 @@ X = [log(M, s, r) for s in P]
 pts = Point3f.(P)
 vecs = Vec3f.(X)
 
-scatter!(ax, M, pts; color = :green, markersize = 8)
-scatter!(ax, M, [Point3f(r),]; color = :orange, markersize = 8)
-arrows3d!(ax, M, pts, vecs; color = :blue,
-    minshaftlength = 0, shaftlength=.99, shaftradius = 0.005,
-    tipradius = 0.02, tiplength = 0.1)
+scatter!(ax, M, pts; color = :green, markersize = 16)
+scatter!(ax, M, [Point3f(r),]; color = :orange, markersize = 16)
+arrows3d!(
+    ax, M, pts, vecs; color = :blue,
+    minshaftlength = 0, shaftlength=.99, shaftradius = 0.004,
+    tipradius = 0.016, tiplength = 0.1,
+)
 fig
 ```
 

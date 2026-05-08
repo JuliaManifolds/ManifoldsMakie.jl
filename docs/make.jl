@@ -82,6 +82,7 @@ makedocs(;
         prettyurls = run_on_CI || ("--prettyurls" ∈ ARGS),
         assets = ["assets/citations.css", "assets/link-icons.css"],
         size_threshold = 300 * 2^10,      # raise slightly 200 to 300 KiB
+        example_size_threshold =  16 * 2^10,
     ),
     authors = "Ronny Bergmann <ronny.bergmann@ntnu.no> and contributors.",
     sitename = "ManifoldsMakie.jl",
@@ -93,7 +94,6 @@ makedocs(;
         "References" => "references.md",
     ],
     plugins = [bib, links],
-    warnonly = [:cross_references], #Temporarily until we fix the Makie.LineStyle ref
 )
 deploydocs(; repo = "github.com/JuliaManifolds/ManifoldsMakie.jl", push_preview = true)
 #back to main env
