@@ -12,3 +12,4 @@ Initial release.
 ## Added
 
 * a `sphereplot(Manifolds.Sphere(2))` to start a plot with a sphere to put points on.
+* a `hyperboloidplot(Hyperbolic(2))` to start a plot in the hyperboloid model.
