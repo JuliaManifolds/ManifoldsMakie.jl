@@ -38,9 +38,7 @@ function Makie.plot!(p::SpherePlot{<:Tuple{Manifolds.Sphere{ℝ, Manifolds.TypeP
     # A solid surface
     mesh!(
         p, p.sphere_mesh;
-        color = p.surfacecolor,
-        alpha = p.surfacealpha,
-        transparency = true,
+        color = p.surfacecolor, alpha = p.surfacealpha, transparency = true,
     )
     # a wireframe atop
     wireframe!(p, p.sphere_mesh; color = p.wirecolor, linewidth = p.wirewidth, transparency = true)
