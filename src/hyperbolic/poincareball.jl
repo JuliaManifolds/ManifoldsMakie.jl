@@ -2,7 +2,7 @@
     poincareballbplot(M::Hyperbolic{ManifoldsBase.TypeParameter{Tuple{2}}}; kwargs...)
     poincareballbplot(M::Hyperbolic{ManifoldsBase.TypeParameter{Tuple{3}}}; kwargs...)
 
-Draw the [`Hyperbolic`](@extref `Manifolds.Hyperbolic`)`(2)` in the [Poiuncaré disc model](https://en.wikipedia.org/wiki/Poincaré_disk_model),
+Draw the [`Hyperbolic`](@extref `Manifolds.Hyperbolic`)`(n)`, `n` either `2` or `3`, in the [Poiuncaré disc model](https://en.wikipedia.org/wiki/Poincaré_disk_model),
 which more generally is a ball for more than the 2D case.
 This can be combined with
 * [`scatter`](@extref `Makie.scatter`)`(M, pts)` to plot points thereon
