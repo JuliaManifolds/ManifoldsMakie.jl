@@ -3,7 +3,7 @@
 ## The 2D Hyperboloid
 
 For the hyperboloid model, points and tangent vectors are either represented by plain arrays
-or using the [`HyperboloidPoint](@extref `Manifolds.HyperboloidPoint`) and the [`HyperboloidTangentVector](@extref `Manifolds.HyperboloidTangentVector`). Here we illustrate both: For a scatter plot, we use arrays first
+or using the [`HyperboloidPoint`](@extref `Manifolds.HyperboloidPoint`) and the [`HyperboloidTangentVector`](@extref `Manifolds.HyperboloidTangentVector`). Here we illustrate both: For a scatter plot, we use arrays first
 
 ```@example
 using GLMakie, ManifoldMakie, Manifolds

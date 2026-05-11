@@ -2,7 +2,7 @@
     poincarehalfspaceplot(M::Hyperbolic{ManifoldsBase.TypeParameter{Tuple{2}}}; kwargs...)
     poincarehalfspaceplot(M::Hyperbolic{ManifoldsBase.TypeParameter{Tuple{3}}}; kwargs...)
 
-Draw the [`Hyperbolic`](@extref `Manifolds.Hyperbolic`)`(2)` in the [Poiuncaré half plane model](https://en.wikipedia.org/wiki/Poincaré_half-plane_model),
+Draw the [`Hyperbolic`](@extref `Manifolds.Hyperbolic`)`(n)`, `n` either `2` or `3`, in the [Poiuncaré half plane model](https://en.wikipedia.org/wiki/Poincaré_half-plane_model),
 which more generally is a half space for more than the 2D case.
 This can be combined with
 * [`scatter`](@extref `Makie.scatter`)`(M, pts)` to plot points thereon
