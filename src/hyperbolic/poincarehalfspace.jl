@@ -42,7 +42,6 @@ function poincarehalfspaceplot(
     #we only have positive y values, so we set the spines accordingly to not show [:b]ottom
     hidespines!(ax, :b)
     pl = poincarehalfspaceplot!(ax, M; kwargs...)
-    @info fig, ax, pl
     return Makie.FigureAxisPlot(fig, ax, pl)
 end
 #
