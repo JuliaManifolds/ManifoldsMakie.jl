@@ -47,18 +47,29 @@ using GLMakie, Manifolds, ManifoldMakie, ReferenceTests, Test
         scattergeodesics!(ax, M, P1; closed = true, color = :blue, linewidth = 2, markersize = 12)
         @test_reference "img/hyperbolic/geodesics.png" fig
     end
-    @testset "Poincare discs" begin
+    @testset "Poincare disc" begin
         M = Hyperbolic(2)
         fig, ax, pl = poincareballplot(M; surfacealpha = 0.5, surfaceboundary = 1)
 
-        pts = PoincareBallPoint.([[0.0, 0.0], 1 / sqrt(2) .* [0.8, -0.8], 1 / sqrt(2) .* [0.8, 0.8], 1 / sqrt(2) .* [-0.8, 0.8], 1 / sqrt(2) .* [-0.8, -0.8]])
+        pts = PoincareBallPoint.([[0.0, 0.0], [0.7, -0.7], [0.7, 0.7], [-0.7, 0.7], [-0.7, -0.7]])
         vecs = [
-            log(M, pts[1], PoincareBallPoint([0.2, 0.0])),
-            [log(M, p, pts[1]) for p in pts[2:end]]...,
+            0.25 * log(M, pts[1], pts[2]), [log(M, p, pts[1]) for p in pts[2:end]]...,
         ]
         scatter!(ax, M, pts; color = :blue, markersize = 8)
         arrows2d!(ax, M, pts, vecs; color = :green)
         geodesics!(ax, M, pts[2:end]; closed = true, color = :orange)
         @test_reference "img/hyperbolic/poincaredisc.png" fig
+    end
+    @testset "Poincare ball" begin
+        M = Hyperbolic(3)
+        fig, ax, pl = poincareballplot(M)
+        pts = PoincareBallPoint.([[0.0, 0.0, 0.0], [0.6, 0.6, 0.6], [-0.6, 0.6, 0.6], [-0.6, -0.6, 0.6], [-0.6, -0.6, -0.6], [-0.6, 0.6, -0.6], [0.6, 0.6, -0.6]])
+        vecs = [
+            log(M, pts[1], pts[2]), [log(M, p, pts[1]) for p in pts[2:end]]...,
+        ]
+        scatter!(ax, M, pts; color = :blue, markersize = 8)
+        arrows3d!(ax, M, pts, vecs; color = :green)
+        geodesics!(ax, M, pts[2:end]; closed = true, color = :orange)
+        @test_reference "img/hyperbolic/poincareball.png" fig
     end
 end

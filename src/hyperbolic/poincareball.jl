@@ -68,7 +68,7 @@ function poincareballplot(
         size = (1024, 1024), backgroundcolor = :white, show_axis = false,
         aspect = Makie.DataAspect(), kwargs...
     )
-    fig = Figure(; backgroundcolor = backgroundcolor, size = size, kwargs...)
+    fig = Figure(; backgroundcolor = backgroundcolor, size = size)
     # 2D plot so we need Axis not LScene (no clue why?!)
     ax = Axis(fig[1, 1])
     ax.aspect = aspect
@@ -86,8 +86,8 @@ function poincareballplot(
         M::Manifolds.Hyperbolic{Manifolds.TypeParameter{Tuple{3}}};
         size = (1024, 1024), backgroundcolor = :white, show_axis = false, kwargs...
     )
-    fig = Figure(backgroundcolor = backgroundcolor, size = size, kwargs...)
-    ax = LScene(fig[1, 1], show_axis = show_axis, kwargs...)
+    fig = Figure(; backgroundcolor = backgroundcolor, size = size)
+    ax = LScene(fig[1, 1], show_axis = show_axis)
     pl = poincareballplot!(ax, M; kwargs...)
     return Makie.FigureAxisPlot(fig, ax, pl)
 end

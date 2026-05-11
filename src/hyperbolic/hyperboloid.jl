@@ -79,8 +79,8 @@ function hyperboloidplot(
         M::Manifolds.Hyperbolic{Manifolds.TypeParameter{Tuple{2}}};
         size = (1024, 1024), backgroundcolor = :white, show_axis = false, kwargs...
     )
-    fig = Figure(backgroundcolor = backgroundcolor, size = size, kwargs...)
-    ax = LScene(fig[1, 1], show_axis = show_axis, kwargs...)
+    fig = Figure(backgroundcolor = backgroundcolor, size = size)
+    ax = LScene(fig[1, 1], show_axis = show_axis)
     pl = hyperboloidplot!(ax, M; kwargs...)
     return Makie.FigureAxisPlot(fig, ax, pl)
 end
